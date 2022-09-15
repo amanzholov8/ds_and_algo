@@ -7,8 +7,9 @@ class BSTNode:
 
   def insert(self, val):
     if val == self.val:
-      raise Exception("Cannot insert duplicates into binary search tree")
-    elif val <= self.val:
+      raise ValueError("Cannot insert duplicates into binary search tree")
+
+    if val <= self.val:
       if self.left:
         self.left.insert(val)
       else:
@@ -31,24 +32,28 @@ class BSTNode:
         return False
       return self.right.contains(val)
 
-  def printInOrder(self):
-    if self.left:
-      self.left.printInOrder()
-    print(self.val)
-    if self.right:
-      self.right.printInOrder()
+  def inOrder(self):
+    left = f"{self.left.inOrder()} " if self.left else ""
+    right = f" {self.right.inOrder()}" if self.right else ""
+    return f"{left}{self.val}{right}"
 
 class BST:
   def __init__(self):
     self.root = None
 
   def insert(self, val):
+    if not isinstance(val, int):
+      raise TypeError("Value must be an interger")
+
     if not self.root:
       self.root = BSTNode(val)
       return
     self.root.insert(val)
 
   def contains(self, val):
+    if not isinstance(val, int):
+      raise TypeError("Value must be an interger")
+
     if not self.root:
       return False
     return self.root.contains(val)
@@ -57,7 +62,7 @@ class BST:
     if not self.root:
       print("None")
       return
-    self.root.printInOrder()
+    print(self.root.inOrder())
 
 
 # tests
@@ -73,4 +78,6 @@ bst.insert(11)
 assert(bst.contains(11))
 bst.insert(9)
 assert(bst.contains(9))
-bst.printInOrder()
+
+print(f"print in order: {bst.printInOrder}")
+assert(bst.root.inOrder() == "8 9 10 11 12")
