@@ -1,6 +1,6 @@
-#!/usr/bin/python3
+# another name: priority queue
 
-class PriorityQueue:
+class Heap:
 	def __init__(self):
 		self.items = []
 
