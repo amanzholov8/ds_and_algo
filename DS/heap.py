@@ -66,7 +66,6 @@ class Heap:
 	def push(self, item):
 		# [10, 15, 20, 17] -> [10, 15, 20, 17, 9]
 		self.items.append(item)
-		# bubble up
 		self.bubbleUp()
 
 	def bubbleDown(self):
@@ -81,10 +80,23 @@ class Heap:
 			else:
 				break
 
-
 	def bubbleUp(self):
 		currIndex = len(self.items) - 1
 		while self.hasParent(currIndex) and self.parent(currIndex) > self.items[currIndex]:
 			parentIndex = self.getParentIndex(currIndex)
 			self.swap(currIndex, parentIndex)
 			currIndex = parentIndex
+
+
+# tests
+heap = Heap()
+heap.push(10)
+assert(heap.peek() == 10)
+heap.push(12)
+assert(heap.peek() == 10)
+assert(heap.pop() == 10)
+assert(heap.peek() == 12)
+heap.push(9)
+heap.push(13)
+heap.push(8)
+assert(heap.peek() == 8)
