@@ -33,3 +33,12 @@ class Trie:
         return False
       node = node.children[ch]
     return True
+
+
+# tests
+trie = Trie()
+trie.insert("cat")
+assert(trie.search("cat") == True)
+assert(trie.search("car") == False)
+assert(trie.prefix("ca") == True)
+assert(trie.prefix("other") == False)
