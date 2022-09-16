@@ -33,9 +33,10 @@ def quicksort_inplace(array):
   sort(0, len(array) - 1)
 
 
-# test:
-print(quicksort([10, 5, 2, 3]))
+# tests
+assert(quicksort([10, 5, 2, 3]) == [2, 3, 5, 10])
 
 array = [10, 5, 2, 3]
 quicksort_inplace(array)
 print(array)
+assert(array == [2, 3, 5, 10])
