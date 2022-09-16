@@ -45,7 +45,6 @@ class Heap:
 			raise Exception("Index out of range")
 		self.items[ind1], self.items[ind2] = self.items[ind2], self.items[ind1]
 
-
 	def peek(self):
 		if not self.items:
 			raise Exception("Heap is empty")
@@ -65,6 +64,8 @@ class Heap:
 
 	def push(self, item):
 		# [10, 15, 20, 17] -> [10, 15, 20, 17, 9]
+		if not isinstance(item, int):
+			raise TypeError("Item must be an interger")
 		self.items.append(item)
 		self.bubbleUp()
 
