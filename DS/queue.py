@@ -1,3 +1,5 @@
+# in interviews, can use collections.deque as queue
+
 # queue implementation using linked list
 class Node:
   def __init__(self, val):
@@ -10,7 +12,7 @@ class Queue:
     self.tail = None # add to the tail
 
   def isEmpty(self):
-    return self.head == None
+    return not self.head
 
   def peek(self):
     return self.head.val if self.head else None

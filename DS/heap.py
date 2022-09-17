@@ -1,3 +1,5 @@
+# in interviews, can use heapq
+
 # another name: priority queue
 
 class Heap:
